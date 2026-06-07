@@ -14,7 +14,7 @@ public sealed class AmandsGraphicsApplyNVGPatch : ModulePatch
     [PatchPostfix]
     public static void PatchPostFix(ref NightVision __instance)
     {
-        if (AmandsGraphicsPlugin.AmandsGraphicsClassComponent.GraphicsMode && AmandsGraphicsClass.Player != null)
+        if (AmandsGraphicsPlugin.AmandsGraphicsClass.GraphicsMode && AmandsGraphicsClass.Player != null)
         {
             AmandsGraphicsClass.defaultNightVisionNoiseIntensity = __instance.NoiseIntensity;
             switch (AmandsGraphicsClass.scene)

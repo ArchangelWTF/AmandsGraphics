@@ -14,6 +14,9 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\References\hollowed.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\References\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="bsg.console.core">
       <HintPath>..\References\bsg.console.core.dll</HintPath>
     </Reference>
@@ -51,8 +54,14 @@
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>..\References\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\References\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\References\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\References\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 

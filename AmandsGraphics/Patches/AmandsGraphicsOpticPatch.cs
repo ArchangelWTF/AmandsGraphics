@@ -17,7 +17,7 @@ public sealed class AmandsGraphicsOpticPatch : ModulePatch
     {
         if (__instance.gameObject.name == "BaseOpticCamera(Clone)")
         {
-            AmandsGraphicsPlugin.AmandsGraphicsClassComponent.ActivateAmandsOpticDepthOfField(__instance.gameObject);
+            AmandsGraphicsPlugin.AmandsGraphicsClass.ActivateAmandsOpticDepthOfField(__instance.gameObject);
             AmandsGraphicsClass.OpticCameraCamera = __instance.GetComponent<Camera>();
             AmandsGraphicsClass.OpticCameraThermalVision = __instance.GetComponent<ThermalVision>();
         }

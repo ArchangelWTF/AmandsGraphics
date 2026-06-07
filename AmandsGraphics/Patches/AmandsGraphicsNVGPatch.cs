@@ -14,10 +14,10 @@ public sealed class AmandsGraphicsNVGPatch : ModulePatch
     [PatchPostfix]
     public static void PatchPostFix(ref NightVision __instance, bool on)
     {
-        if (AmandsGraphicsPlugin.AmandsGraphicsClassComponent.GraphicsMode && AmandsGraphicsClass.Player != null && AmandsGraphicsClass.NVG != on && AmandsGraphicsClass.FPSCameraNightVision != null)
+        if (AmandsGraphicsPlugin.AmandsGraphicsClass.GraphicsMode && AmandsGraphicsClass.Player != null && AmandsGraphicsClass.NVG != on && AmandsGraphicsClass.FPSCameraNightVision != null)
         {
             AmandsGraphicsClass.NVG = on;
-            AmandsGraphicsPlugin.AmandsGraphicsClassComponent.UpdateAmandsGraphics();
+            AmandsGraphicsPlugin.AmandsGraphicsClass.UpdateAmandsGraphics();
         }
         AmandsGraphicsClass.NVG = on;
     }

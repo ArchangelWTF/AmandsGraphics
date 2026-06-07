@@ -15,7 +15,7 @@ public sealed class AmandsGraphicsPrismEffectsPatch : ModulePatch
     {
         if (__instance.gameObject.name == "FPS Camera")
         {
-            AmandsGraphicsPlugin.AmandsGraphicsClassComponent.GraphicsMode = false;
+            AmandsGraphicsPlugin.AmandsGraphicsClass.GraphicsMode = false;
             OnEnableAsync(__instance);
         }
     }
@@ -23,6 +23,6 @@ public sealed class AmandsGraphicsPrismEffectsPatch : ModulePatch
     private static async void OnEnableAsync(PrismEffects instance)
     {
         await Task.Delay(100);
-        AmandsGraphicsPlugin.AmandsGraphicsClassComponent.ActivateAmandsGraphics(instance.gameObject, instance);
+        AmandsGraphicsPlugin.AmandsGraphicsClass.ActivateAmandsGraphics(instance.gameObject, instance);
     }
 }

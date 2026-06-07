@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AmandsGraphics.Enums;
 using SPT.Reflection.Patching;
 
 namespace AmandsGraphics.Patches;
@@ -15,7 +16,7 @@ public sealed class AmandsGraphicsFastBlurHitPatch : ModulePatch
     {
         if (AmandsGraphicsPlugin.HealthEffectHit.Value == EEnabledFeature.On)
         {
-            AmandsGraphicsPlugin.AmandsGraphicsClassComponent.AmandsGraphicsHitEffect(power);
+            AmandsGraphicsPlugin.AmandsGraphicsClass.AmandsGraphicsHitEffect(power);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AmandsGraphics.Enums;
 using HarmonyLib;
 using SPT.Reflection.Patching;
 using UnityEngine;
@@ -24,7 +25,7 @@ public sealed class AmandsGraphicsTacticalComboVisualControllerPatch : ModulePat
                     AmandsGraphicsClass.registeredLights.Add(light, light.range);
                 }
 
-                if (AmandsGraphicsPlugin.AmandsGraphicsClassComponent.GraphicsMode)
+                if (AmandsGraphicsPlugin.AmandsGraphicsClass.GraphicsMode)
                 {
                     light.range = AmandsGraphicsClass.registeredLights[light] * AmandsGraphicsPlugin.FlashlightRange.Value;
                 }
@@ -36,7 +37,7 @@ public sealed class AmandsGraphicsTacticalComboVisualControllerPatch : ModulePat
                     {
                         AmandsGraphicsClass.registeredVolumetricLights.Add(volumetricLight, volumetricLight.ExtinctionCoef);
                     }
-                    if (AmandsGraphicsPlugin.AmandsGraphicsClassComponent.GraphicsMode)
+                    if (AmandsGraphicsPlugin.AmandsGraphicsClass.GraphicsMode)
                     {
                         volumetricLight.ExtinctionCoef = AmandsGraphicsPlugin.FlashlightExtinctionCoef.Value;
                         if (volumetricLight.VolumetricMaterial != null)

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AmandsGraphics.Enums;
 using SPT.Reflection.Patching;
 
 namespace AmandsGraphics.Patches;
