@@ -87,7 +87,7 @@ jobs:
             for entry in "${RESULTS[@]}"; do
               [ -z "$entry" ] && continue
               name="${entry%%=*}"
-              url="${entry##*=}"
+              url="${entry#*=}"
               echo "- [\`$(basename "$name")\`]($url)"
             done
             echo "EOF"
