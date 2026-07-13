@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using AmandsGraphics.Enums;
-using HarmonyLib;
 using SPT.Reflection.Patching;
 using UnityEngine;
 
@@ -10,34 +9,22 @@ public sealed class AmandsPainkillerDeleteEffectPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        return AmandsGraphicsPlugin.PainKillerEffectType.GetMethod("DeleteEffect", BindingFlags.Instance | BindingFlags.Public);
+        //EffectsController.DesaturateMaskAccumulator in 4.1
+        return typeof(EffectsController.Class640).GetMethod(nameof(EffectsController.Class640.DeleteEffect));
     }
 
     [PatchPostfix]
-    public static void PatchPostFix(ref object __instance)
+    public static void PatchPostFix(ref EffectsController.Class640 __instance)
     {
         if (AmandsGraphicsPlugin.HealthEffectPainkiller.Value == EEnabledFeature.On)
         {
-            List<IEffect> ActiveEffects = Traverse.Create(__instance).Field("ActiveEffects").GetValue<List<IEffect>>();
-            if (ActiveEffects != null)
+            if (__instance.ActiveEffects.Count == 0)
             {
-                /*bool bool_1 = Traverse.Create(__instance).Field("bool_1").GetValue<bool>();
-                float float_2 = Traverse.Create(__instance).Field("float_2").GetValue<float>();*/
-
-                float maxEffectValue;
-                if (ActiveEffects.Count <= 0)
-                {
-                    maxEffectValue = 0f;
-                }
-                else
-                {
-                    maxEffectValue = Mathf.Min(1.0f * AmandsGraphicsPlugin.PainkillerSaturation.Value, 1f);
-                }
-                Traverse.Create(__instance).Field("MaxEffectValue").SetValue(maxEffectValue);
-                /*if (bool_1)
-                {
-                    Traverse.Create(__instance).Field("float_3").SetValue((ActiveEffects.Count > 0) ? 0.015f * AmandsGraphicsPlugin.PainkillerCAIntensity.Value : float_2);
-                }*/
+                __instance.MaxEffectValue = 0f;
+            }
+            else
+            {
+                __instance.MaxEffectValue = Mathf.Min(1.0f * AmandsGraphicsPlugin.PainkillerSaturation.Value, 1f);
             }
         }
     }

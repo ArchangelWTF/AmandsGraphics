@@ -1,22 +1,17 @@
 using System.Collections;
 using AmandsGraphics.Enums;
-using AmandsGraphics.Patches;
-using AmandsGraphics.Patches.Effects;
 using BepInEx;
 using BepInEx.Configuration;
+using SPT.Reflection.Patching;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 namespace AmandsGraphics;
 
-[BepInPlugin("com.Amanda.Graphics", "Amands's Graphics", "1.7.0")]
+[BepInPlugin(AmandsGraphicsCompileConstants.PLUGIN_GUID, AmandsGraphicsCompileConstants.PLUGIN_NAME, AmandsGraphicsCompileConstants.PLUGIN_VERSION)]
 public class AmandsGraphicsPlugin : BaseUnityPlugin
 {
     public static AmandsGraphicsClass AmandsGraphicsClass { get; private set; }
-
-    public static Type PainKillerEffectType;
-    public static Type PainEffectType;
-
     public static ConfigEntry<KeyboardShortcut> GraphicsToggle { get; set; }
     public static ConfigEntry<EDebugMode> DebugMode { get; set; }
 
@@ -215,8 +210,13 @@ public class AmandsGraphicsPlugin : BaseUnityPlugin
     public static ConfigEntry<string> Version { get; set; }
     private static bool _requestDefaultValues = false;
 
+    private PatchManager _patchManager;
+
     public void Awake()
     {
+        _patchManager = new(this, true);
+        _patchManager.EnablePatches();
+
         StartCoroutine(CreateGraphicsHookAfterInit());
     }
 
@@ -463,22 +463,6 @@ public class AmandsGraphicsPlugin : BaseUnityPlugin
         {
             DefaultValues();
         }
-
-        new AmandsPlayerPatch().Enable();
-        new AmandsGraphicsNVGPatch().Enable();
-        new AmandsGraphicsApplyNVGPatch().Enable();
-        new AmandsGraphicsHBAOPatch().Enable();
-        new AmandsGraphicsPrismEffectsPatch().Enable();
-        new AmandsGraphicsOpticPatch().Enable();
-        new AmandsGraphicsOpticSightPatch().Enable();
-        new AmandsGraphicsCameraClassPatch().Enable();
-        new AmandsGraphicsmethod_25Patch().Enable();
-        new AmandsGraphicsTacticalComboVisualControllerPatch().Enable();
-        new AmandsGraphicsFastBlurPatch().Enable();
-        new AmandsGraphicsMethod_7Patch().Enable();
-        new AmandsGraphicsFastBlurHitPatch().Enable();
-        new AmandsBattleUIScreenPatch().Enable();
-        new AmandsEffectsControllerPatch().Enable();
     }
     private void DefaultValues()
     {

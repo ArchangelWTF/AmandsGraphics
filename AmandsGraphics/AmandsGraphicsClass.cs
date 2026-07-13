@@ -624,11 +624,11 @@ public class AmandsGraphicsClass : MonoBehaviour
                 FPSCameraPostProcessVolume = FPSCamera.GetComponent<PostProcessVolume>();
                 if (FPSCameraPostProcessVolume != null)
                 {
-                    FPSCameraPostProcessVolume.profile.TryGetSettings<UnityEngine.Rendering.PostProcessing.MotionBlur>(out FPSCameraMotionBlur);
+                    FPSCameraPostProcessVolume.profile.TryGetSettings(out FPSCameraMotionBlur);
                     if (FPSCameraMotionBlur == null)
                     {
                         FPSCameraPostProcessVolume.profile.AddSettings<UnityEngine.Rendering.PostProcessing.MotionBlur>();
-                        FPSCameraPostProcessVolume.profile.TryGetSettings<UnityEngine.Rendering.PostProcessing.MotionBlur>(out FPSCameraMotionBlur);
+                        FPSCameraPostProcessVolume.profile.TryGetSettings(out FPSCameraMotionBlur);
                     }
                 }
                 FPSCameraPostProcessLayer = FPSCamera.GetComponent<PostProcessLayer>();
@@ -959,7 +959,10 @@ public class AmandsGraphicsClass : MonoBehaviour
                         NVGAmbientContrast.AddKey(0f, AmandsGraphicsPlugin.NVGAmbientContrast.Value);
                         break;
                 }
-                if (scene != "Laboratory_Scripts") toDController.AmbientContrast = NVGAmbientContrast;
+                if (scene != "Laboratory_Scripts")
+                {
+                    toDController.AmbientContrast = NVGAmbientContrast;
+                }
             }
             if (levelSettings != null)
             {

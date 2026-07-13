@@ -8,7 +8,8 @@ public sealed class AmandsPainTogglePatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        return AmandsGraphicsPlugin.PainEffectType.GetMethod("Toggle", BindingFlags.Instance | BindingFlags.Public);
+        //EffectsController.CC_RadialBlurAccumulator in 4.1
+        return typeof(EffectsController.Class637).GetMethod(nameof(EffectsController.Class637.Toggle));
     }
 
     [PatchPrefix]
