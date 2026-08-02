@@ -4,12 +4,11 @@ using SPT.Reflection.Patching;
 
 namespace AmandsGraphics.Patches;
 
-public class AmandsGraphicsMethod_7Patch : ModulePatch
+public class AmandsGraphicsOnPlayerDamagedPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        //Todo; Check, likely incorrect (3.10 -> 4.0)
-        return typeof(EffectsController).GetMethod("method_7", BindingFlags.Instance | BindingFlags.Public);
+        return typeof(EffectsController).GetMethod(nameof(EffectsController.OnPlayerDamaged));
     }
 
     [PatchPostfix]
