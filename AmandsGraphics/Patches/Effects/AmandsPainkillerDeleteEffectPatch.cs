@@ -9,12 +9,11 @@ public sealed class AmandsPainkillerDeleteEffectPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        //EffectsController.DesaturateMaskAccumulator in 4.1
-        return typeof(EffectsController.Class640).GetMethod(nameof(EffectsController.Class640.DeleteEffect));
+        return typeof(EffectsController.DesaturateMaskAccumulator).GetMethod(nameof(EffectsController.DesaturateMaskAccumulator.DeleteEffect));
     }
 
     [PatchPostfix]
-    public static void PatchPostFix(ref EffectsController.Class640 __instance)
+    public static void PatchPostFix(ref EffectsController.DesaturateMaskAccumulator __instance)
     {
         if (AmandsGraphicsPlugin.HealthEffectPainkiller.Value == EEnabledFeature.On)
         {

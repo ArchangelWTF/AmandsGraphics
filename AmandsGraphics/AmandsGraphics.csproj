@@ -5,7 +5,7 @@
     <Nullable>disable</Nullable>
     <LangVersion>latest</LangVersion>
     <ReleaseOutputDir>../Build/BepInEx/plugins/AmandsGraphics/</ReleaseOutputDir>
-    <Version>1.7.0</Version>
+    <Version>1.7.0</Version>  
     <PluginGuid>com.Amanda.Graphics</PluginGuid>
     <PluginName>Amands's Graphics</PluginName>
   </PropertyGroup>

@@ -207,9 +207,6 @@ public class AmandsGraphicsPlugin : BaseUnityPlugin
     public static ConfigEntry<Vector4> LightColorIndex4 { get; set; }
     public static ConfigEntry<Vector4> LightColorIndex5 { get; set; }
 
-    public static ConfigEntry<string> Version { get; set; }
-    private static bool _requestDefaultValues = false;
-
     private PatchManager _patchManager;
 
     public void Awake()
@@ -237,25 +234,6 @@ public class AmandsGraphicsPlugin : BaseUnityPlugin
 
     public void Start()
     {
-        Version = Config.Bind("Versioning", "Version", "0.0.0", new ConfigDescription("", null, new ConfigurationManagerAttributes { Order = 1, ReadOnly = true, IsAdvanced = true }));
-
-        if (Version.Value == "0.0.0")
-        {
-            // Using New Config File
-            Version.Value = Info.Metadata.Version.ToString();
-            _requestDefaultValues = true;
-        }
-        else if (Version.Value != Info.Metadata.Version.ToString())
-        {
-            // Using Old Config File
-            Version.Value = Info.Metadata.Version.ToString();
-            _requestDefaultValues = true;
-        }
-        else
-        {
-            // Valid Config File
-        }
-
         string AmandsCinematic = "AmandsGraphics Cinematic";
         string AmandsExperimental = "AmandsGraphics Experimental";
         string AmandsFeatures = "AmandsGraphics Features";
@@ -458,23 +436,5 @@ public class AmandsGraphicsPlugin : BaseUnityPlugin
         LightColorIndex3 = Config.Bind("AmandsGraphics LightColor", "Index3", new Vector4(219.0f, 191.0f, 160.0f) / 255.0f, new ConfigDescription("", null, new ConfigurationManagerAttributes { Order = 130, IsAdvanced = true }));
         LightColorIndex4 = Config.Bind("AmandsGraphics LightColor", "Index4", new Vector4(255.0f, 238.0f, 196.0f) / 255.0f, new ConfigDescription("", null, new ConfigurationManagerAttributes { Order = 120, IsAdvanced = true }));
         LightColorIndex5 = Config.Bind("AmandsGraphics LightColor", "Index5", new Vector4(150.0f, 143.0f, 122.0f) / 255.0f, new ConfigDescription("", null, new ConfigurationManagerAttributes { Order = 110, IsAdvanced = true }));
-
-        if (_requestDefaultValues)
-        {
-            DefaultValues();
-        }
-    }
-    private void DefaultValues()
-    {
-        LabsACES.Value = (Vector3)LabsACES.DefaultValue;
-        LabsACESS.Value = (Vector3)LabsACESS.DefaultValue;
-        LabsFilmicS.Value = (Vector3)LabsFilmicS.DefaultValue;
-        FactoryACES.Value = (Vector3)FactoryACES.DefaultValue;
-        FactoryACESS.Value = (Vector3)FactoryACESS.DefaultValue;
-        FactoryFilmic.Value = (Vector3)FactoryFilmic.DefaultValue;
-        FactoryNightACES.Value = (Vector3)FactoryNightACES.DefaultValue;
-        FactoryNightACESS.Value = (Vector3)FactoryNightACESS.DefaultValue;
-        FactoryNightFilmic.Value = (Vector3)FactoryNightFilmic.DefaultValue;
-        FactoryNightFilmicS.Value = (Vector3)FactoryNightFilmicS.DefaultValue;
     }
 }

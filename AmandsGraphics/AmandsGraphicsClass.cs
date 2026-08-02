@@ -3,7 +3,6 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.SceneManagement;
 using EFT.Weather;
-using BSG.CameraEffects;
 using HarmonyLib;
 using UnityEngine.Rendering;
 using EFT;
@@ -11,6 +10,7 @@ using EFT.InventoryLogic;
 using EFT.UI;
 using UnityEngine.UI;
 using AmandsGraphics.Enums;
+using NightVision = BSG.CameraEffects.NightVision;
 
 namespace AmandsGraphics;
 
